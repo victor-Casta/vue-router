@@ -15,6 +15,11 @@
           <RouterLink to="/about">About</RouterLink>
         </a>
       </li>
+      <li>
+        <a>
+          <RouterLink to="/chats">Chats</RouterLink>
+        </a>
+      </li>
     </ul>
   </div>
 </div>
