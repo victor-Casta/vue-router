@@ -1,4 +1,5 @@
 <template>
+  <Header />
   <ul class="menu bg-dracula w-56 rounded-box">
     <li>
       <h2 class="menu-title">Chats</h2>
@@ -17,6 +18,7 @@
 </template>
 
 <script>
+  import Header from '../components/Header.vue'
   export default {
     data() {
       return {
@@ -26,6 +28,9 @@
           { id: 3, title: 'Andrea' },
         ],
       }
-    }
+    },
+    components: {
+      Header,
+    },
   }
 </script>

@@ -1,10 +1,12 @@
 <template>
+  <Header />
   <div class="about">
     <Carousel />
   </div>
 </template>
 
 <script setup>
+  import Header from '../components/Header.vue'
   import Carousel from '../components/Carousel.vue'
 </script>
 
