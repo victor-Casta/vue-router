@@ -11,9 +11,7 @@
   </ul>
   <div>
     <article>
-      {{
-        this.$route.params.chatId
-      }}
+      <RouterView />
     </article>
   </div>
 </template>
