@@ -7,12 +7,17 @@
     <ul class="menu menu-horizontal px-1">
       <li>
         <a>
-          <RouterLink to="/">Home</RouterLink>
+          <RouterLink :to="{ name: 'home' }">Home</RouterLink>
         </a>
       </li>
       <li>
         <a>
-          <RouterLink to="/about">About</RouterLink>
+          <RouterLink to="/session">Session</RouterLink>
+        </a>
+      </li>
+      <li>
+        <a>
+          <RouterLink :to="{ name: 'about' }">About</RouterLink>
         </a>
       </li>
       <li>

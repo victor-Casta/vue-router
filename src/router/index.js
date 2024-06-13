@@ -4,10 +4,24 @@ import HomeView from '../views/HomeView.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
+    // Redireccion en rutas: { path: '/home', redirect: { name: 'home' } },
     {
-      path: '/',
       name: 'home',
       component: HomeView,
+      alias: [ '/home', '/init', '/principal' ]
+    },
+    {
+      path: '/session',
+      component: () => import('../views/SessionView.vue'),
+      children: [
+        {
+          path: '',
+          components: {
+            default: () => import('../views/LoginView.vue'),
+            register: () => import('../views/RegisterView.vue')
+          }
+        }
+      ]
     },
     {
       path: '/chats',
