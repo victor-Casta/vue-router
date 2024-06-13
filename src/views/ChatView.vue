@@ -1,11 +1,17 @@
 <template>
   <div v-for="message in filteredMessages" :key="message.id">
-  {{ message.text }}
+    {{ message.text }}
   </div>
 </template>
 
 <script>
   export default {
+    props: {
+      chatId: {
+        type: String,
+        default: ''
+      }
+    },
     data() {
       return {
         messages: [
@@ -20,7 +26,7 @@
     computed: {
       filteredMessages() {
         return this.messages.filter((message) => {
-          return `${message.author}` === this.$route.params.chatId
+          return `${message.author}` === this.chatId
         } )    
       }
     }
