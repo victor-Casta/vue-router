@@ -6,9 +6,13 @@ const router = createRouter({
   routes: [
     // Redireccion en rutas: { path: '/home', redirect: { name: 'home' } },
     {
+      path: '/',
       name: 'home',
       component: HomeView,
-      alias: [ '/home', '/init', '/principal' ]
+      alias: ['/home', '/init', '/principal'],
+      meta: {
+        requiresAuth: false
+      }
     },
     {
       path: '/session',
@@ -28,14 +32,18 @@ const router = createRouter({
       name: 'chats',
       component: () => import('../views/ChatsView.vue'),
       children: [
-        { 
-          path: ':chatId', 
-          component: () => import('../views/ChatView.vue') ,
+        {
+          path: ':chatId',
+          component: () => import('../views/ChatView.vue'),
           props: (route) => (
             { chatId: route.params.chatId }
           )
         },
-      ]
+      ],
+      meta: {
+        requiresAuth: true,
+        roles: ['admin']
+      }
     },
     {
       path: '/about',
@@ -46,8 +54,11 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from) => {
-  console.log(to, from)
-  if(to.path === '/') return { name: 'about' }
+  if (to.meta?.requiresAuth && to.meta?.roles.includes('admin')) {
+    return '/session'
+  }
+
+  if (to.path === '/') return { name: 'about' }
   return true
 })
 
