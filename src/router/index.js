@@ -54,11 +54,11 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from) => {
-  if (to.meta?.requiresAuth && to.meta?.roles.includes('admin')) {
-    return '/session'
-  }
+  // if (to.meta?.requiresAuth && to.meta?.roles.includes('admin')) {
+  //   return '/session'
+  // }
 
-  if (to.path === '/') return { name: 'about' }
+  // if (to.path === '/') return { name: 'about' }
   return true
 })
 

@@ -22,15 +22,27 @@
   export default {
     data() {
       return {
-        chats: [
-          { id: 1, title: 'Sara' },
-          { id: 2, title: 'Camila' },
-          { id: 3, title: 'Andrea' },
-        ],
+        chats: []
       }
     },
     components: {
       Header,
     },
+    created() {
+      this.$watch(
+        () => this.$route.params,
+        (val) => {
+          console.log('update params', val)
+          this.chats = [
+          { id: 1, title: 'Sara' },
+          { id: 2, title: 'Camila' },
+          { id: 3, title: 'Andrea' },
+        ]
+        },
+        {
+          immediate: true,
+        }
+      )
+    }
   }
 </script>
