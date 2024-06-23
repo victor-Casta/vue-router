@@ -12,17 +12,14 @@
   </main>
 </template>
 
-<script>
-  export default {
-    data() {
-      return {
-        username: ''
-      }
-    },
-    methods: {
-      login() {
-        this.$router.push({ path: '/chats', query: { username: this.username } })
-      }
-    }
+<script setup>
+  import { ref } from 'vue'
+  import { useRouter } from 'vue-router'
+
+  const username = ref('')
+  const router = useRouter()
+
+  const login = () => {
+    router.push({ path: '/chats', query: { username: username.value } })
   }
 </script>
