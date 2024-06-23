@@ -25,6 +25,11 @@
           <RouterLink to="/chats">Chats</RouterLink>
         </a>
       </li>
+      <li>
+        <a>
+          <RouterLink v-show="isTest" to="/profile">Profile</RouterLink>
+        </a>
+      </li>
     </ul>
   </div>
 </div>
@@ -32,4 +37,6 @@
 
 <script>
 import { RouterLink } from 'vue-router'
+
+const isTest = import.meta.env.VITE_STAGE === 'test'
 </script>
